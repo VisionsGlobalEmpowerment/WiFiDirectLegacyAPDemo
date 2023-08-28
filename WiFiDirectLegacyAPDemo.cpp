@@ -29,7 +29,20 @@ int _tmain(int argc, _TCHAR* argv[])
 
     SimpleConsole console;
 
-    console.RunConsole();
+	//read ssid and pass from command line arguments
+    std::wstring ssid;
+    std::wstring pass;
+    if (argc == 3)
+    {
+		ssid = argv[1];
+		pass = argv[2];
+
+        console.RunConsole(ssid, pass);
+	}
+    else
+    {
+        console.RunConsole();
+	}
 
     return 0;
 }

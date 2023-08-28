@@ -33,6 +33,19 @@ SimpleConsole::~SimpleConsole()
     _hostedNetwork.RegisterPrompt(nullptr);
 }
 
+//overload RunConsole() to take ssid and pass as arguments
+void SimpleConsole::RunConsole(std::wstring ssid, std::wstring pass)
+{
+	_hostedNetwork.SetSSID(ssid);
+	_hostedNetwork.SetPassphrase(pass);
+    _hostedNetwork.SetAutoAccept(true);
+
+    _hostedNetwork.Start();
+    WaitForSingleObjectEx(_apEvent.Get(), INFINITE, FALSE);
+
+    RunConsole();
+}
+
 void SimpleConsole::RunConsole()
 {
     std::wstring command;

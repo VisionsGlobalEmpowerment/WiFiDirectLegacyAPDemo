@@ -20,6 +20,7 @@ public:
     SimpleConsole();
     virtual ~SimpleConsole();
 
+    void RunConsole(std::wstring ssid, std::wstring pass);
     void RunConsole();
 
     // IWlanHostedNetworkListener Implementation
